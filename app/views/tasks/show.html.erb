@@ -2,5 +2,7 @@
 <p><%= @task.details  %></p>
 
 <%= link_to "Back to list", "/tasks" %>
-<br><br>
-<%= link_to "Delete this task", "/tasks" %>
+<br>
+<%= link_to "Update this task", edit_path(@task) %>
+<br>
+<%= link_to "Delete this task", tasks_path %>

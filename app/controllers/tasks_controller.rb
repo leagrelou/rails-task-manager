@@ -11,7 +11,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = gjh
+    task = Task.create(task_params)
+
+    redirect_to task_path(task)
   end
 
   def edit
@@ -20,6 +22,9 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    @task.update(task_params)
+
+    redirect_to task_path(@task)
   end
 
   def destroy
@@ -27,5 +32,11 @@ class TasksController < ApplicationController
     @task.destroy
 
     redirect_to '/tasks'
+  end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:title, :details)
   end
 end
